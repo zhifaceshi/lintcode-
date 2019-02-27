@@ -19,7 +19,7 @@ class DATA():
         self.x_test_var=x_test_var
         self.y_test_vars=y_test_vars
         self.tokenizer = tokenizer
-        
+
     def getdata(self):
         csvortsv = self.train_pth.split('.')[-1]
         train_data = data.TabularDataset(path=self.train_pth, fields=self.fields, format=csvortsv, skip_header=True)
@@ -48,7 +48,7 @@ class BertData(DATA):
         
     def build_word(self,train_data,tokenizer):
         
-        self.TEXT.build_vocab(train_data[self.x_var])
+        self.TEXT.build_vocab(train_data)
         self.TEXT.vocab.itos=self.tokenizer.ids_to_tokens
         a = defaultdict(lambda: self.tokenizer.vocab['[UNK]'])
         a.update({i: tok for i, tok in (self.tokenizer.vocab).items()})

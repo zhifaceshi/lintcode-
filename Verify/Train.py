@@ -31,6 +31,7 @@ class Trainer():
                 if self.use_GPU:
                     word=word.cuda()
                     target=target.cuda()
+                    mask=mask.cuda()
                 
                 loss=self.model(word,mask,target)
                 loss=loss.sum()
