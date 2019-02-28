@@ -24,8 +24,12 @@ if __name__ == '__main__':
     print("loading model...")
     model = MyBert()
 
-    optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=3e-3)
+    optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=1e-3)
     
+    #######################################################
+    # import adabound
+    # optimizer=adabound.AdaBound(filter(lambda p: p.requires_grad, model.parameters()), lr=3e-3,final_lr=0.1)
+    #######################################################
     print('loading data...')
     bertdata = BertData(train_pth, train_fields, test_pth, test_fields, TEXT, LABEL, x_var, y_vars, x_test_var,None,
                               tokenizer)
