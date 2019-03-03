@@ -28,14 +28,14 @@ if __name__ == '__main__':
     # optimizer = torch.optim.Adam(model.parameters(), lr=2e-4)
     ######################################################
     import adabound
-    optimizer=adabound.AdaBound(model.parameters(), lr=2e-4,final_lr=0.1)
+    optimizer=adabound.AdaBound(model.parameters(), lr=2e-5,final_lr=0.1)
     #######################################################
-    train_test = False
+    train_test = True
     
     modelname = "./models_pkl/Bert_4layers_MODEL.pkl"
     if train_test:
         trainer = Trainer(model, train_iter, optimizer, modelname, use_GPU=True)
-        trainer.train(100, pretrain_pth=modelname, padding_idx=1)
+        trainer.train(1000, pretrain_pth=modelname, padding_idx=1)
     else:
         tester = Tester(model, test_iter, use_GPU=True)
         df = tester.test(modelname, padding_idx=1)

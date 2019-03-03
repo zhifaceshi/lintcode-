@@ -9,6 +9,7 @@
 
 ***
 结果    
+
 模型|训练轮数|分数     
 :----:|:-----:|:----:  
 BiLSTM|10|99.263%      
@@ -25,6 +26,23 @@ transformer-4layers|100|99.980%
 ***
 
 # LintCode句子情感分类
-[句子情感分类](https://www.lintcode.com/ai/UMICH_Sentiment_Analysis/overview)
+
+[句子情感分类](https://www.lintcode.com/ai/UMICH_Sentiment_Analysis/overview)  
+:smile:
+***
+
+模型|训练轮数|分数     
+:----:|:-----:|:----:  
+BiLSTM|100|95.416%      
+CNN|100|97.179%  
+Bert-base|10|%   
+transformer-4layers|100|%  
+
+
+***
++ 更换数据集后，CNN报错，原因是句子有的长度还没有kernel大，需要处理。
+但是，TEXT的fix_length参数，会把所有的句子都会固定一样长度，不是我们想要的。
+因此，我们需要继承这个类，然后修改它。
+
 
 
